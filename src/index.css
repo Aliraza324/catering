@@ -1,0 +1,157 @@
+@import "tailwindcss";
+
+:root {
+  --ground: #f8fafc;
+  --surface: #ffffff;
+  --raised: #f1f5f9;
+  --active: #e2e8f0;
+  --border: #e2e8f0;
+  --rule: #edf2f7;
+  --control: #cbd5e1;
+  --text: #0f172a;
+  --muted: #475569;
+  --faint: #64748b;
+  --accent: #1b6c80;
+  --accent-light: #e6f3f6;
+  --accent-hover: #155565;
+  --primary: #0f172a;
+  --primary-ink: #ffffff;
+  --positive: #166534;
+  --negative: #991b1b;
+  --warning: #854d0e;
+  --chart-1: #1b6c80;
+  --chart-2: #2f70bb;
+  --chart-3: #a86f0c;
+  --chart-4: #247b50;
+  --pill-positive-bg: #dcfce7;
+  --pill-positive-ink: #14532d;
+  --pill-negative-bg: #fee2e2;
+  --pill-negative-ink: #7f1d1d;
+  --pill-warning-bg: #fef9c3;
+  --pill-warning-ink: #713f12;
+  --pill-neutral-bg: #f1f5f9;
+  --pill-neutral-ink: #334155;
+  --radius-card: 8px;
+  --radius-control: 6px;
+  --radius-sheet: 14px;
+  --sheet-inset: 8px;
+  --row-height: 48px;
+  --sidebar-width: 252px;
+  --gap: 20px;
+  --pad: 24px;
+  --control-height: 34px;
+  --fs-title: 22px;
+  --fs-section: 15px;
+  --fs-kpi: 26px;
+  --fs-body: 13.5px;
+  --fs-small: 12px;
+  --font: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "IBM Plex Mono", Consolas, monospace;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: var(--ground);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: var(--fs-body);
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, p, figure, ul, ol, dl, dd {
+  margin: 0;
+}
+
+ul, ol {
+  padding: 0;
+  list-style: none;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* Ensure dark/black buttons have crisp white text and icon strokes */
+button.bg-\[\#131416\],
+button.bg-black,
+.bg-\[\#131416\],
+.btn-dark {
+  color: #ffffff !important;
+}
+
+button.bg-\[\#131416\] svg,
+button.bg-black svg,
+.bg-\[\#131416\] svg,
+.btn-dark svg {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Tabular figures for data tables and financial numbers */
+.num, table, .kpi-value, [data-num] {
+  font-variant-numeric: tabular-nums;
+}
+
+.mono {
+  font-family: var(--font-mono);
+}
+
+/* Scrollbar refinement */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--control);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted);
+}
+
+/* Print styling for invoices */
+@media print {
+  body {
+    background: #ffffff !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+  .sheet-container {
+    border: none !important;
+    padding: 0 !important;
+  }
+}
