@@ -3,13 +3,24 @@ import { Sidebar } from './Sidebar';
 import { TopBar } from './TopBar';
 import { NotificationToast } from '../common/NotificationToast';
 import { UserProfileModal } from '../modals/UserProfileModal';
+import { KitchenLoader } from '../common/KitchenLoader';
+import { useApp } from '../../context/AppContext';
 
 export const AppShell = ({ children }) => {
+  const { isGlobalLoading, setIsGlobalLoading, loadingMessage } = useApp();
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-[#f9fbfc] text-[#131416] flex flex-col">
+      {/* Global Simulated Telemetry & Sync Loader */}
+      {isGlobalLoading && (
+        <KitchenLoader
+          variant="fullscreen"
+          label={loadingMessage}
+          onComplete={() => setIsGlobalLoading(false)}
+        />
+      )}
       {/* Sidebar */}
       <Sidebar
         isMobileOpen={isMobileOpen}

@@ -45,6 +45,21 @@ export const AppProvider = ({ children }) => {
   const [dailyTrends] = useState(() => loadState('trends', INITIAL_DAILY_TRENDS));
 
   const [notification, setNotification] = useState(null);
+  const [isGlobalLoading, setIsGlobalLoading] = useState(false);
+  const [loadingMessage, setLoadingMessage] = useState('');
+
+  const triggerKitchenSync = (message = 'Synchronizing central commissary telemetry...') => {
+    setLoadingMessage(message);
+    setIsGlobalLoading(true);
+    setTimeout(() => {
+      setIsGlobalLoading(false);
+      showNotification(
+        'Kitchen Telemetry Synced',
+        'Live production, cold chain and inventory nodes synchronized with central server.',
+        'success'
+      );
+    }, 1800);
+  };
 
   // Sync state to localStorage
   useEffect(() => {
@@ -332,6 +347,10 @@ export const AppProvider = ({ children }) => {
     notification,
     showNotification,
     resetDemoData,
+    isGlobalLoading,
+    setIsGlobalLoading,
+    loadingMessage,
+    triggerKitchenSync,
     // Key Aggregates
     totalMealsServedToday,
     totalMealsPlannedToday,

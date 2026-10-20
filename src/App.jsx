@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AppProvider } from './context/AppContext';
 import { AppShell } from './components/layout/AppShell';
+import { KitchenLoader } from './components/common/KitchenLoader';
 
 import { DashboardPage } from './pages/DashboardPage';
 import { ClientsPage } from './pages/ClientsPage';
@@ -18,8 +19,17 @@ import { LocationsPage } from './pages/LocationsPage';
 import { ForecastingPage } from './pages/ForecastingPage';
 
 export default function App() {
+  const [isInitialBoot, setIsInitialBoot] = useState(true);
+
   return (
     <AppProvider>
+      {isInitialBoot && (
+        <KitchenLoader
+          variant="fullscreen"
+          autoCompleteDuration={1600}
+          onComplete={() => setIsInitialBoot(false)}
+        />
+      )}
       <BrowserRouter>
         <AppShell>
           <Routes>

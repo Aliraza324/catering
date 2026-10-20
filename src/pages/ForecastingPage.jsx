@@ -3,6 +3,7 @@ import { useApp } from '../context/AppContext';
 import { formatINR, formatNumber } from '../utils/formatters';
 import { Sparkles, TrendingUp, AlertTriangle, Lightbulb, Play, RefreshCw, CheckCircle2 } from 'lucide-react';
 import { ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, LineChart, Line } from 'recharts';
+import { KitchenLoader } from '../components/common/KitchenLoader';
 
 export const ForecastingPage = () => {
   const { clients, ingredients } = useApp();
@@ -12,6 +13,7 @@ export const ForecastingPage = () => {
   const [expectedAttendancePct, setExpectedAttendancePct] = useState(92);
   const [weatherCondition, setWeatherCondition] = useState('Clear / Normal');
   const [isSimulated, setIsSimulated] = useState(true);
+  const [isSimulating, setIsSimulating] = useState(false);
 
   // Weather impact multiplier
   const weatherMultiplier =
@@ -94,15 +96,38 @@ export const ForecastingPage = () => {
 
       {/* Simulator Control Sandbox */}
       <div className="bg-[#f9fbfc] border border-[#e8eaec] rounded-lg p-5 space-y-4">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col min-[480px]:flex-row min-[480px]:items-center justify-between gap-2">
           <span className="text-[13px] font-bold text-[#131416] uppercase tracking-wider flex items-center gap-1.5">
             <TrendingUp className="w-4 h-4 text-[#1b6c80]" />
             Simulation Parameters & Prediction Variables
           </span>
-          <span className="text-[11px] text-[#737678] font-mono">Simulated Rule Engine · Offline Demo</span>
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={() => {
+                setIsSimulating(true);
+                setTimeout(() => setIsSimulating(false), 1200);
+              }}
+              style={{ color: '#ffffff', backgroundColor: '#131416' }}
+              className="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-[#131416] text-white text-[12px] font-medium hover:bg-[#222] transition-colors cursor-pointer"
+            >
+              <RefreshCw className={`w-3.5 h-3.5 text-white ${isSimulating ? 'animate-spin' : ''}`} style={{ stroke: '#ffffff' }} />
+              <span style={{ color: '#ffffff' }} className="text-white">Run AI Forecast</span>
+            </button>
+            <span className="hidden sm:inline text-[11px] text-[#737678] font-mono">Offline Model</span>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-[13px]">
+        {isSimulating ? (
+          <div className="bg-white border border-[#e8eaec] rounded p-6">
+            <KitchenLoader
+              variant="card"
+              label="Recomputing Headcount Variances & Batch Prep Yields..."
+              autoCompleteDuration={1100}
+            />
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-[13px]">
           <div>
             <label className="block text-[#5d5f60] mb-1 font-medium">Forecast Target Day</label>
             <select

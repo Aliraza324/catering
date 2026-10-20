@@ -1,9 +1,9 @@
 import React from 'react';
-import { Menu, MapPin, Calendar, Search } from 'lucide-react';
+import { Menu, MapPin, Calendar, RotateCw } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 
 export const TopBar = ({ onOpenMobile, onOpenProfile }) => {
-  const { locations, selectedLocationId, setSelectedLocationId } = useApp();
+  const { locations, selectedLocationId, setSelectedLocationId, triggerKitchenSync } = useApp();
 
   return (
     <header className="sticky top-0 z-30 flex items-center justify-between h-12 px-2.5 sm:px-4 md:px-6 bg-[#f9fbfc] border-b border-[#e8eaec]">
@@ -37,6 +37,16 @@ export const TopBar = ({ onOpenMobile, onOpenProfile }) => {
 
       {/* Right cluster */}
       <div className="flex items-center gap-2 sm:gap-3 text-[12px] sm:text-[13px]">
+        <button
+          type="button"
+          onClick={() => triggerKitchenSync('Synchronizing multi-location commissary telemetry...')}
+          className="hidden min-[520px]:flex items-center gap-1.5 text-[#5d5f60] hover:text-[#1b6c80] bg-white border border-[#e8eaec] hover:border-[#1b6c80] rounded px-2.5 py-1 transition-colors cursor-pointer text-[12px]"
+          title="Trigger Live Kitchen Sync & Telemetry Loader"
+        >
+          <RotateCw className="w-3.5 h-3.5 text-[#1b6c80]" />
+          <span>Sync Kitchens</span>
+        </button>
+
         <div className="hidden md:flex items-center gap-1.5 text-[#5d5f60] bg-white border border-[#e8eaec] rounded px-2.5 py-1">
           <Calendar className="w-3.5 h-3.5 text-[#737678]" />
           <span>Tue, 20 Oct 2026</span>

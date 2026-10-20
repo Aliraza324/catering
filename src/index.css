@@ -155,3 +155,125 @@ a {
     padding: 0 !important;
   }
 }
+
+/* Unique Culinary & Kitchen Loader Animations */
+@keyframes cloche-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes steam-drift-left {
+  0% {
+    transform: translateY(0) scale(0.8) rotate(0deg);
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.85;
+  }
+  60% {
+    transform: translateY(-12px) scale(1.1) rotate(-6deg);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-22px) scale(1.3) rotate(-12deg);
+    opacity: 0;
+  }
+}
+
+@keyframes steam-drift-center {
+  0% {
+    transform: translateY(0) scale(0.9);
+    opacity: 0;
+  }
+  35% {
+    opacity: 0.9;
+  }
+  70% {
+    transform: translateY(-15px) scale(1.15);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-26px) scale(1.4);
+    opacity: 0;
+  }
+}
+
+@keyframes steam-drift-right {
+  0% {
+    transform: translateY(0) scale(0.8) rotate(0deg);
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.85;
+  }
+  60% {
+    transform: translateY(-12px) scale(1.1) rotate(6deg);
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-22px) scale(1.3) rotate(12deg);
+    opacity: 0;
+  }
+}
+
+@keyframes dial-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dial-rotate-reverse {
+  0% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes simmer-glow {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(0.96);
+  }
+  50% {
+    opacity: 0.75;
+    transform: scale(1.04);
+  }
+}
+
+.animate-cloche-float {
+  animation: cloche-float 2.8s ease-in-out infinite;
+}
+
+.animate-steam-left {
+  animation: steam-drift-left 2.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+.animate-steam-center {
+  animation: steam-drift-center 2.5s cubic-bezier(0.4, 0, 0.2, 1) infinite 0.4s;
+}
+
+.animate-steam-right {
+  animation: steam-drift-right 2.1s cubic-bezier(0.4, 0, 0.2, 1) infinite 0.8s;
+}
+
+.animate-dial-rotate {
+  animation: dial-rotate 12s linear infinite;
+}
+
+.animate-dial-rotate-reverse {
+  animation: dial-rotate-reverse 18s linear infinite;
+}
+
+.animate-simmer-glow {
+  animation: simmer-glow 2.4s ease-in-out infinite;
+}
+
