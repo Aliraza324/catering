@@ -20,7 +20,7 @@ import {
 } from 'lucide-react';
 
 export const UserProfileModal = ({ isOpen, onClose }) => {
-  const { locations, notify } = useApp();
+  const { locations, showNotification } = useApp();
   const [activeTab, setActiveTab] = useState('overview'); // 'overview', 'shift', 'alerts', 'security'
   const [dutyStatus, setDutyStatus] = useState('On Active Duty');
   const [alerts, setAlerts] = useState({
@@ -38,11 +38,13 @@ export const UserProfileModal = ({ isOpen, onClose }) => {
 
   const handleSave = () => {
     setSavedSuccess(true);
-    notify({
-      title: 'Profile Updated',
-      message: 'Duty status and notification preferences updated successfully.',
-      type: 'success',
-    });
+    if (showNotification) {
+      showNotification(
+        'Profile Updated',
+        'Duty status and notification preferences updated successfully.',
+        'success'
+      );
+    }
     setTimeout(() => {
       setSavedSuccess(false);
       onClose();
@@ -50,11 +52,13 @@ export const UserProfileModal = ({ isOpen, onClose }) => {
   };
 
   const handleSimulateSignOut = () => {
-    notify({
-      title: 'Session Maintained (Demo Mode)',
-      message: 'Profile sign-out simulated. Demo state remains preserved in local storage.',
-      type: 'info',
-    });
+    if (showNotification) {
+      showNotification(
+        'Session Maintained (Demo Mode)',
+        'Profile sign-out simulated. Demo state remains preserved in local storage.',
+        'info'
+      );
+    }
     onClose();
   };
 
@@ -108,11 +112,11 @@ export const UserProfileModal = ({ isOpen, onClose }) => {
         </div>
 
         {/* Tab Navigation */}
-        <div className="flex flex-wrap border-b border-[#e8eaec] gap-1 text-[12px] font-medium">
+        <div className="flex border-b border-[#e8eaec] gap-1 overflow-x-auto text-[12px] font-medium">
           <button
             type="button"
             onClick={() => setActiveTab('overview')}
-            className={`px-3 py-2 border-b-2 transition-colors ${
+            className={`px-3 py-2 border-b-2 -mb-px whitespace-nowrap cursor-pointer transition-colors ${
               activeTab === 'overview'
                 ? 'border-[#1b6c80] text-[#1b6c80] font-semibold'
                 : 'border-transparent text-[#5d5f60] hover:text-[#131416]'
@@ -123,7 +127,7 @@ export const UserProfileModal = ({ isOpen, onClose }) => {
           <button
             type="button"
             onClick={() => setActiveTab('shift')}
-            className={`px-3 py-2 border-b-2 transition-colors ${
+            className={`px-3 py-2 border-b-2 -mb-px whitespace-nowrap cursor-pointer transition-colors ${
               activeTab === 'shift'
                 ? 'border-[#1b6c80] text-[#1b6c80] font-semibold'
                 : 'border-transparent text-[#5d5f60] hover:text-[#131416]'
@@ -134,7 +138,7 @@ export const UserProfileModal = ({ isOpen, onClose }) => {
           <button
             type="button"
             onClick={() => setActiveTab('alerts')}
-            className={`px-3 py-2 border-b-2 transition-colors ${
+            className={`px-3 py-2 border-b-2 -mb-px whitespace-nowrap cursor-pointer transition-colors ${
               activeTab === 'alerts'
                 ? 'border-[#1b6c80] text-[#1b6c80] font-semibold'
                 : 'border-transparent text-[#5d5f60] hover:text-[#131416]'
@@ -145,7 +149,7 @@ export const UserProfileModal = ({ isOpen, onClose }) => {
           <button
             type="button"
             onClick={() => setActiveTab('security')}
-            className={`px-3 py-2 border-b-2 transition-colors ${
+            className={`px-3 py-2 border-b-2 -mb-px whitespace-nowrap cursor-pointer transition-colors ${
               activeTab === 'security'
                 ? 'border-[#1b6c80] text-[#1b6c80] font-semibold'
                 : 'border-transparent text-[#5d5f60] hover:text-[#131416]'
@@ -283,7 +287,7 @@ export const UserProfileModal = ({ isOpen, onClose }) => {
                     <div>
                       <div className="font-medium text-[#131416]">{loc.name}</div>
                       <div className="text-[11px] text-[#5d5f60]">
-                        {loc.type} · Capacity: {loc.capacity.toLocaleString('en-IN')} portions/day
+                        {loc.type} · Capacity: {(loc.dailyCapacity || loc.capacity || 2500).toLocaleString('en-IN')} portions/day
                       </div>
                     </div>
                     <span className="text-[11px] font-mono font-medium text-[#1e7b4f] px-2 py-0.5 bg-[#e8f5e9] rounded">
