@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { CodesincBadge } from './CodesincBadge';
 
 const OPERATIONAL_STEPS = [
   'Initiating central commissary batching telemetry...',
@@ -311,9 +312,14 @@ export const KitchenLoader = ({
         )}
 
         {/* Facility Nodes Active Footer */}
-        <div className="mt-8 flex items-center gap-2 text-[11px] text-[#737678]">
+        <div className="mt-7 flex items-center gap-2 text-[11px] text-[#737678]">
           <span className="w-1.5 h-1.5 rounded-full bg-[#1e7b4f]" />
           <span>Central Commissary · Okhla Base Kitchen · Finishing Pantries</span>
+        </div>
+
+        {/* Codesinc Branding Attribution */}
+        <div className="mt-5 pt-3 border-t border-[#e8eaec] w-full flex justify-center">
+          <CodesincBadge />
         </div>
       </div>
     </div>

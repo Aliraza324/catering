@@ -17,6 +17,7 @@ import {
   RotateCcw,
 } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
+import { CodesincBadge } from '../common/CodesincBadge';
 
 export const Sidebar = ({ isMobileOpen, onCloseMobile, onOpenProfile }) => {
   const { lowStockCount, resetDemoData } = useApp();
@@ -192,6 +193,11 @@ export const Sidebar = ({ isMobileOpen, onCloseMobile, onOpenProfile }) => {
             <RotateCcw className="w-3.5 h-3.5" />
             <span>Reset Demo Records</span>
           </button>
+
+          {/* Agency & Hosting Attribution */}
+          <div className="pt-2 border-t border-[#e8eaec]">
+            <CodesincBadge variant="sidebar" />
+          </div>
         </div>
       </aside>
     </>

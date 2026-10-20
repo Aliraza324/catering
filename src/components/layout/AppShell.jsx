@@ -4,6 +4,7 @@ import { TopBar } from './TopBar';
 import { NotificationToast } from '../common/NotificationToast';
 import { UserProfileModal } from '../modals/UserProfileModal';
 import { KitchenLoader } from '../common/KitchenLoader';
+import { CodesincBadge } from '../common/CodesincBadge';
 import { useApp } from '../../context/AppContext';
 
 export const AppShell = ({ children }) => {
@@ -36,9 +37,23 @@ export const AppShell = ({ children }) => {
         />
 
         {/* Framed white sheet container */}
-        <main className="flex-1 p-1.5 min-[380px]:p-2.5 sm:p-3 bg-[#f9fbfc] min-w-0">
-          <div className="bg-white border border-[#e8eaec] rounded-lg sm:rounded-2xl p-2.5 min-[360px]:p-3.5 sm:p-6 md:p-8 min-h-[calc(100vh-4.5rem)] min-w-0 overflow-x-hidden">
-            {children}
+        <main className="flex-1 p-1.5 min-[380px]:p-2.5 sm:p-3 bg-[#f9fbfc] min-w-0 flex flex-col">
+          <div className="bg-white border border-[#e8eaec] rounded-lg sm:rounded-2xl p-2.5 min-[360px]:p-3.5 sm:p-6 md:p-8 min-h-[calc(100vh-4.5rem)] min-w-0 overflow-x-hidden flex-1 flex flex-col justify-between">
+            <div className="flex-1">
+              {children}
+            </div>
+
+            {/* Page Footer with Codesinc Branding */}
+            <footer className="mt-12 pt-4 border-t border-[#e8eaec] flex flex-col sm:flex-row items-center justify-between gap-3 text-[12px] text-[#737678]">
+              <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-center sm:text-left">
+                <span className="font-semibold text-[#131416]">Aramya Foods Pvt. Ltd.</span>
+                <span>·</span>
+                <span>Corporate Catering & Canteen ERP</span>
+                <span>·</span>
+                <span className="font-mono text-[11px]">v2.6</span>
+              </div>
+              <CodesincBadge variant="footer" />
+            </footer>
           </div>
         </main>
       </div>

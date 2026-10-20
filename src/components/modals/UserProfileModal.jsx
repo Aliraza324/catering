@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Modal } from '../common/Modal';
 import { useApp } from '../../context/AppContext';
 import { Badge } from '../common/Badge';
+import { CodesincBadge } from '../common/CodesincBadge';
 import {
   User,
   ShieldCheck,
@@ -400,6 +401,15 @@ export const UserProfileModal = ({ isOpen, onClose }) => {
                 <span className="text-[#5d5f60]">Role Security Level:</span>
                 <span className="font-medium text-[#131416]">Enterprise Operations Director (Tier 1)</span>
               </div>
+            </div>
+
+            {/* Platform Engineering & Hosting Attribution */}
+            <div className="p-3 bg-white border border-[#e8eaec] rounded flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div>
+                <span className="font-semibold text-[#131416] block">Platform Infrastructure & Web Engineering</span>
+                <span className="text-[11px] text-[#5d5f60]">Designed, deployed & hosted on high-availability cloud infrastructure.</span>
+              </div>
+              <CodesincBadge variant="footer" />
             </div>
 
             <div className="p-3 bg-[#fef2f2] border border-[#fecaca] rounded flex flex-col min-[400px]:flex-row min-[400px]:items-center justify-between gap-2.5">
