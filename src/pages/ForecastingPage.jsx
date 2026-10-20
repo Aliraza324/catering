@@ -171,6 +171,7 @@ export const ForecastingPage = () => {
             </select>
           </div>
         </div>
+        )}
       </div>
 
       {/* Output Predictions KPI Row */}
