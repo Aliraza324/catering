@@ -7,13 +7,13 @@ export const CodesincBadge = ({ variant = 'default', className = '' }) => {
         href="https://www.codes-inc.com/"
         target="_blank"
         rel="noopener noreferrer"
-        className={`flex items-center gap-2.5 p-2 rounded-md bg-white border border-[#e8eaec] hover:border-[#0080FF] transition-colors group ${className}`}
+        className={`flex items-center justify-center p-2 rounded-lg bg-white border border-[#e8eaec] hover:border-[#0080FF] transition-colors group ${className}`}
         title="Designed and hosted by Codesinc. - Visit www.codes-inc.com"
       >
         <img
           src="/codesinc-brand.png"
           alt="Designed and hosted by Codesinc."
-          className="h-8 w-auto object-contain shrink-0"
+          className="h-8.5 w-auto max-w-full object-contain"
         />
       </a>
     );
@@ -25,13 +25,13 @@ export const CodesincBadge = ({ variant = 'default', className = '' }) => {
         href="https://www.codes-inc.com/"
         target="_blank"
         rel="noopener noreferrer"
-        className={`inline-flex items-center gap-2 p-1.5 px-3 rounded-md bg-white border border-[#e8eaec] hover:border-[#0080FF] transition-colors group ${className}`}
+        className={`inline-flex items-center hover:opacity-80 transition-opacity group ${className}`}
         title="Designed and hosted by Codesinc. - Visit www.codes-inc.com"
       >
         <img
           src="/codesinc-brand.png"
           alt="Designed and hosted by Codesinc."
-          className="h-7 w-auto object-contain shrink-0"
+          className="h-8 sm:h-9 w-auto object-contain"
         />
       </a>
     );
@@ -42,13 +42,13 @@ export const CodesincBadge = ({ variant = 'default', className = '' }) => {
       href="https://www.codes-inc.com/"
       target="_blank"
       rel="noopener noreferrer"
-      className={`inline-flex items-center transition-opacity hover:opacity-85 ${className}`}
-      title="Designed and hosted by Codesinc. — Visit www.codes-inc.com"
+      className={`inline-flex items-center hover:opacity-80 transition-opacity ${className}`}
+      title="Designed and hosted by Codesinc. - Visit www.codes-inc.com"
     >
       <img
         src="/codesinc-brand.png"
         alt="Designed and hosted by Codesinc."
-        className="h-8 w-auto object-contain"
+        className="h-8 sm:h-9 w-auto object-contain"
       />
     </a>
   );

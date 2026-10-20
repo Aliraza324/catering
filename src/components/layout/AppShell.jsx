@@ -44,15 +44,13 @@ export const AppShell = ({ children }) => {
             </div>
 
             {/* Page Footer with Codesinc Branding */}
-            <footer className="mt-12 pt-4 border-t border-[#e8eaec] flex flex-col sm:flex-row items-center justify-between gap-3 text-[12px] text-[#737678]">
-              <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-center sm:text-left">
-                <span className="font-semibold text-[#131416]">Aramya Foods Pvt. Ltd.</span>
-                <span>·</span>
-                <span>Corporate Catering & Canteen ERP</span>
-                <span>·</span>
-                <span className="font-mono text-[11px]">v2.6</span>
-              </div>
+            <footer className="mt-12 pt-4 border-t border-[#e8eaec] flex items-center justify-between gap-3 text-[12px] text-[#737678]">
               <CodesincBadge variant="footer" />
+              <div className="hidden sm:flex items-center gap-1.5 text-[11px] text-[#737678]">
+                <span>Aramya Foods Operations</span>
+                <span>·</span>
+                <span className="font-mono">v2.6</span>
+              </div>
             </footer>
           </div>
         </main>
